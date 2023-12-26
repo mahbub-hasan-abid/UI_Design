@@ -23,10 +23,13 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Stack(
               clipBehavior: Clip.none,
               children: [
-                Image.asset(
-                  'assets/images/last.png',
-                  fit: BoxFit.fill,
-                  width: MediaQuery.of(context).size.width,
+                Hero(
+                  tag: 'heroTag#1',
+                  child: Image.asset(
+                    'assets/images/last.png',
+                    fit: BoxFit.fill,
+                    width: MediaQuery.of(context).size.width,
+                  ),
                 ),
                 Positioned(
                   left: 15,
@@ -104,16 +107,18 @@ class _ThirdScreenState extends State<ThirdScreen> {
                       )
                     ],
                   ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Show map',
-                        style: TextStyle(
-                            color: Colors.blue[500],
-                            fontSize: 18,
-                            fontFamily: '2ndfamily',
-                            fontWeight: FontWeight.bold),
-                      ))
+                  Expanded(
+                    child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Show map',
+                          style: TextStyle(
+                              color: Colors.blue[500],
+                              fontSize: 18,
+                              fontFamily: '2ndfamily',
+                              fontWeight: FontWeight.bold),
+                        )),
+                  )
                 ],
               ),
             ),
@@ -148,7 +153,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 'Facilities',
                 style: TextStyle(
                     fontFamily: '2ndfont',
-                    fontSize: 30,
+                    fontSize: 26,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -156,8 +161,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  width: 80,
-                  height: 100,
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey[200]),
@@ -166,7 +170,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                       Icon(
                         Icons.wifi_rounded,
                         color: Colors.grey,
-                        size: 70,
+                        size: 50,
                       ),
                       Text(
                         '1 Heater',
@@ -176,7 +180,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   ),
                 ),
                 Container(
-                  width: 80,
+                  padding: const EdgeInsets.all(10),
                   height: 100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -186,7 +190,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                       Icon(
                         Icons.dining_outlined,
                         color: Colors.grey,
-                        size: 70,
+                        size: 50,
                       ),
                       Text(
                         'Dinner',
@@ -196,8 +200,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   ),
                 ),
                 Container(
-                  width: 80,
-                  height: 100,
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey[200]),
@@ -206,7 +209,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                       Icon(
                         Icons.hot_tub_outlined,
                         color: Colors.grey,
-                        size: 60,
+                        size: 50,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
@@ -219,8 +222,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   ),
                 ),
                 Container(
-                  width: 80,
-                  height: 100,
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey[200]),
@@ -229,7 +231,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                       Icon(
                         Icons.pool_rounded,
                         color: Colors.grey,
-                        size: 60,
+                        size: 50,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8),
@@ -265,14 +267,15 @@ class _ThirdScreenState extends State<ThirdScreen> {
                         ),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                fixedSize: Size(300, 70),
+                                minimumSize: Size(200, 60),
                                 backgroundColor: Color(0xFF186FF2)),
                             onPressed: () {},
                             child: Center(
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '              Book Now',
+                                    'Book Now',
                                     style: TextStyle(
                                         fontSize: 20, color: Colors.white),
                                   ),
