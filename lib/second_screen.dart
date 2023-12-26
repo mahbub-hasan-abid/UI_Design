@@ -1,4 +1,6 @@
 import 'package:figma_project_1/third_screen.dart';
+import 'package:figma_project_1/utils/custom_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -11,6 +13,14 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   var _currentIndex = 0;
   var _current = 0;
+  String selectedButtonTitle = 'Location';
+
+  void onPressed(String select) {
+    setState(() {
+      selectedButtonTitle = select;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +65,7 @@ class _SecondScreenState extends State<SecondScreen> {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 40),
@@ -71,19 +82,24 @@ class _SecondScreenState extends State<SecondScreen> {
                         ]),
                       ),
                     ),
-                    SizedBox(
-                      width: 160,
+                    // SizedBox(
+                    //   width: 160,
+                    // ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(
+                          Icons.location_on_rounded,
+                          color: Colors.blue[500],
+                        ),
+                        Text('Aspen,USA  '),
+                        Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: Colors.blue[500],
+                          size: 35,
+                        )
+                      ],
                     ),
-                    Icon(
-                      Icons.location_on_rounded,
-                      color: Colors.blue[500],
-                    ),
-                    Text('Aspen,USA  '),
-                    Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: Colors.blue[500],
-                      size: 35,
-                    )
                   ],
                 ),
                 Padding(
@@ -93,8 +109,8 @@ class _SecondScreenState extends State<SecondScreen> {
                         filled: true,
                         fillColor: Color.fromARGB(255, 240, 242, 243),
                         hintText: 'Find things to do',
-                        prefixIcon: Icon(
-                          Icons.search,
+                        prefixIcon: const Icon(
+                          CupertinoIcons.search,
                           color: Colors.grey,
                         ),
                         border: OutlineInputBorder(
@@ -104,16 +120,44 @@ class _SecondScreenState extends State<SecondScreen> {
                         hintStyle: TextStyle(color: Colors.grey)),
                   ),
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      TextButton(onPressed: () {}, child: Text('Location')),
-                      TextButton(onPressed: () {}, child: Text('Hotels')),
-                      TextButton(onPressed: () {}, child: Text('Food')),
-                      TextButton(onPressed: () {}, child: Text('Adventure')),
-                      TextButton(onPressed: () {}, child: Text('Adventure')),
-                    ],
+                const SizedBox(
+                  height: 10,
+                ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 250),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CustomButton(
+                          title: 'Location',
+                          onpressed: onPressed,
+                          isSelected: selectedButtonTitle == 'Location',
+                        ),
+                        CustomButton(
+                          title: 'Hotels',
+                          onpressed: onPressed,
+                          isSelected: selectedButtonTitle == 'Hotels',
+                        ),
+                        CustomButton(
+                          title: 'Food',
+                          onpressed: onPressed,
+                          isSelected: selectedButtonTitle == 'Food',
+                        ),
+                        CustomButton(
+                          title: 'Adevnture',
+                          onpressed: onPressed,
+                          isSelected: selectedButtonTitle == 'Adevnture',
+                        ),
+                        CustomButton(
+                          title: 'Tourist',
+                          onpressed: onPressed,
+                          isSelected: selectedButtonTitle == 'Tourist',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 NavigationBar(
@@ -179,10 +223,13 @@ class _SecondScreenState extends State<SecondScreen> {
                                   builder: (context) => ThirdScreen(),
                                 ));
                           },
-                          child: Image.asset(
-                            'assets/images/Image group.png',
-                            height: 370,
-                            fit: BoxFit.contain,
+                          child: Hero(
+                            tag: 'heroTag#1',
+                            child: Image.asset(
+                              'assets/images/Image group.png',
+                              height: 370,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),
