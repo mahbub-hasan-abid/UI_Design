@@ -12,13 +12,13 @@ class homePage extends StatelessWidget {
       body: Stack(children: [
         Image.asset(
           'assets/images/first screewn bg pc.png',
-          fit: BoxFit.fitHeight,
+          fit: BoxFit.cover,
           width: wd,
           height: ht,
         ),
-        const Positioned(
-          top: 110,
-          left: 107,
+        Positioned(
+          top: ht * 0.1,
+          left: wd * 0.2,
           child: Text(
             'AspeN',
             style: TextStyle(
@@ -28,8 +28,8 @@ class homePage extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 725,
-          left: 42,
+          top: ht * .6,
+          left: wd * 0.1,
           child: RichText(
               text: const TextSpan(
                   style: TextStyle(fontFamily: '2ndfont'),
@@ -44,8 +44,8 @@ class homePage extends StatelessWidget {
               ])),
         ),
         Positioned(
-            top: 200,
-            left: 42,
+            top: ht * 0.85,
+            left: wd * 0.1,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     fixedSize: Size(wd * .85, 70),
